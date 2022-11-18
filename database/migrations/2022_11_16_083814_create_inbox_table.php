@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('phone_number');
             $table->string('message');
-            $table->string('user_id');
+            $table->integer('user_id');
         });
     }
 

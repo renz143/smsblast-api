@@ -51,4 +51,8 @@ class UserController extends Controller
 
         Inbox::insert($data);
     }
+
+    public function show() {
+        return Inbox::with('user')->get();
+    }
 }
