@@ -33,7 +33,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function sendSMS(Request $request) : Inbox{
+    public function sendSMS(Request $request) : Inbox {
         $phone_number = $request->phone_number;
         $message = $request->message;
         $user_id = $request->user_id;
