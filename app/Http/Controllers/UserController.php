@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Inbox;
+use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
 
     }
 
-    public function register(Request $request) {
+    public function register(Request $request) : JsonResponse {
         $username = $request->username;
         $password = $request->password;
 
@@ -32,7 +33,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function sendSMS(Request $request) {
+    public function sendSMS(Request $request) : Inbox{
         $phone_number = $request->phone_number;
         $message = $request->message;
         $user_id = $request->user_id;
