@@ -20,5 +20,6 @@ Route::post('/register', [UserController::class,'register']);
 Route::post('/send-sms', [UserController::class,'sendSMS']);
 Route::get('/show', [UserController::class,'show']);
 Route::get('/showreguser', [UserController::class,'showregUser']);
+Route::put('/updateuser/{id}', [UserController::class,'updateUser']);
 
 

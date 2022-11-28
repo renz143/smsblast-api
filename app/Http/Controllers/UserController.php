@@ -38,6 +38,31 @@ class UserController extends Controller
         ]);
     }
 
+    public function updateUser(Request $request, $id) {
+        $user = User::find($id);
+
+        $firstname = $request->firstname;
+        $lastname = $request->lastname;
+        $username = $request->username;
+        $password = $request->password;
+        $access_level = $request->access_level;
+
+        $data = [
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'username' => $username,
+            'password' => $password,
+            'access_level' => $access_level
+        ];
+
+        $user->update($request->all());
+
+        return response()->json([
+            'success' => true,
+            'data' => $data
+        ]);
+    }
+
 
 
     public function sendSMS(Request $request) {
