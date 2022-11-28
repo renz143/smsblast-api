@@ -12,8 +12,6 @@ class Inbox extends Model
 
     protected $table = 'inbox';
 
-    public $timestamps = false;
-
     protected $fillable = [
         'phone_number',
         'message',
