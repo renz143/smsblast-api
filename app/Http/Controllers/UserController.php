@@ -16,12 +16,18 @@ class UserController extends Controller
     }
 
     public function register(Request $request) {
+        $firstname = $request->firstname;
+        $lastname = $request->lastname;
         $username = $request->username;
         $password = $request->password;
+        $access_level = $request->access_level;
 
         $data = [
-            'name' => $username,
-            'password' => $password
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'username' => $username,
+            'password' => $password,
+            'access_level' => $access_level
         ];
 
         User::create($data);
@@ -31,6 +37,8 @@ class UserController extends Controller
             'data' => $data
         ]);
     }
+
+
 
     public function sendSMS(Request $request) {
         $phone_number = $request->phone_number;
@@ -55,4 +63,10 @@ class UserController extends Controller
     public function show() {
         return Inbox::with('user')->get();
     }
+    public function showregUser() {
+        return User::get();
+    }
+   
 }
+
+
