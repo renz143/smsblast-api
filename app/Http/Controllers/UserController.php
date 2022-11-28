@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Inbox;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
@@ -61,7 +62,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function show() {
+    public function show() : Collection {
         return Inbox::with('user')->get();
     }
 }
