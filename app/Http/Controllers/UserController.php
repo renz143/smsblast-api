@@ -19,8 +19,12 @@ class UserController extends Controller
     }
 
     public function register(Request $request) : JsonResponse {
+        $firstname = $request->firstname;
+        $lastname = $request->lastname;
         $username = $request->username;
         $password = $request->password;
+        $access_level = $request->access_level;
+
 
         $data = [
             'name' => $username,
@@ -60,6 +64,14 @@ class UserController extends Controller
             'success' => true,
             'message' => 'Message sent successfully'
         ]);
+    }
+
+    public function showUsers() : Collection {
+        return User::all();
+    }
+
+    public function updateUserPrivilege($user_id) {
+        User::where('id', 3)->update(['title'=>'Updated title']);
     }
 
     public function show() : Collection {

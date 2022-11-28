@@ -20,3 +20,8 @@ Route::post('/register', [UserController::class,'register']);
 Route::post('/send-sms', [UserController::class,'sendSMS']);
 Route::get('/show', [UserController::class,'show']);
 
+Route::group(['prefix'=>'user'], function(){
+    Route::get('/show', [UserController::class,'showUsers']);
+    Route::get('/update', [UserController::class,'updateUserPrivilege']);
+});
+
