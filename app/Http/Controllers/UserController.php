@@ -85,7 +85,10 @@ class UserController extends Controller
     public function showregUser() {
         return User::get();
     }
-   
+    public function getTotalMessage($user_id) {
+        return Inbox::where('user_id', $user_id)->get();
+    }
+
 }
 
 

@@ -21,5 +21,6 @@ Route::post('/send-sms', [UserController::class,'sendSMS']);
 Route::get('/show', [UserController::class,'show']);
 Route::get('/showreguser', [UserController::class,'showregUser']);
 Route::put('/updateuser/{id}', [UserController::class,'updateUser']);
+Route::get('/get-total-message/{id}', [UserController::class,'getTotalMessage']);
 
 
