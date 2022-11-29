@@ -94,6 +94,7 @@ class UserController extends Controller
         $data = DB::table('inbox')
             ->select('user_id', 'message', 'users.username')
             ->join('users', 'users.id', '=', 'inbox.user_id')
+            ->where('inbox.user_id', $user_id)
             ->get();
 
         $username = $data->toArray()[0]->username;
