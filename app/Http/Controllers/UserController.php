@@ -41,17 +41,9 @@ class UserController extends Controller
     public function updateUser(Request $request, $id) {
         $user = User::find($id);
 
-        $firstname = $request->firstname;
-        $lastname = $request->lastname;
-        $username = $request->username;
-        $password = $request->password;
         $access_level = $request->access_level;
 
         $data = [
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'username' => $username,
-            'password' => $password,
             'access_level' => $access_level
         ];
 
@@ -59,7 +51,9 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $data
+            'data' => $data,
+            'result' => $id,
+            'message' => "user updated successfuly!"
         ]);
     }
 
