@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Inbox;
 
@@ -82,11 +83,25 @@ class UserController extends Controller
     public function show() {
         return Inbox::with('user')->get();
     }
+
     public function showregUser() {
         return User::get();
     }
+
     public function getTotalMessage($user_id) {
-        return Inbox::where('user_id', $user_id)->count('user_id');
+        $count = Inbox::where('user_id', $user_id)->count('user_id');
+
+        $data = DB::table('inbox')
+            ->select('user_id', 'message', 'users.username')
+            ->join('users', 'users.id', '=', 'inbox.user_id')
+            ->get();
+
+        $username = $data->toArray()[0]->username;
+
+        return response()->json([
+            'username' => $username,
+            'count' => $count
+        ]);
     }
 
 }
